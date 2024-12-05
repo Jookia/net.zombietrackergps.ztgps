@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.zombietrackergps.ztgps</id>
+  
+  <name>ZombieTrackerGPS</name>
+  <summary>Fitness and GPS Track Management for Linux  Open Source</summary>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  
+  <description>
+    <p>
+      ZombieTrackerGPS (ZTGPS) can manage collections of GPS tracks from biking, hiking, rafting, light aircraft, snowboarding, and many other activities. It features local data storage, privacy-by-design with no data scraping or monetization, advanced sorting and query capabilities to let you see and manage your data, and a highly customizable interface to put you in control.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">zombietrackergps.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://www.zombietrackergps.net/ztgps/Images/Large/ZTGPS-Full-Dark.jpg</image>
+    </screenshot>
+    <screenshot>
+      <image>https://www.zombietrackergps.net/ztgps/Images/Screenshots/Device-Import.jpg</image>
+    </screenshot>
+    <screenshot>
+      <image>https://www.zombietrackergps.net/ztgps/Images/Screenshots/App-Docs.jpg</image>
+    </screenshot>
+  </screenshots>
+</component>

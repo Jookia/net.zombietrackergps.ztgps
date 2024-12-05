@@ -1,0 +1,75 @@
+id: net.zombietrackergps.ztgps
+runtime: org.kde.Platform
+runtime-version: '5.15-24.08'
+sdk: org.kde.Sdk
+command: zombietrackergps
+cleanup:
+  - /include
+  - /lib/cmake
+  - /lib/ldutils
+  - /share/cmake
+  - /share/applications/*marble*.desktop
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  - --share=network
+  - --filesystem=/media
+  - --filesystem=/run/media
+  - --filesystem=xdg-documents
+  - --filesystem=xdg-download
+modules:
+  - name: ldutils
+    sources:
+      - type: git
+        url: https://gitlab.com/ldutils-projects/ldutils.git
+        tag: v_1.15
+        commit: f4658c28fdeff09e882330a94f3c12ea8c8f6c1a
+    buildsystem: cmake
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+    run-tests: true
+    test-rule: ""
+    test-commands:
+      - make testldutils
+      - QT_QPA_PLATFORM="offscreen" ./artifacts/testldutils
+  - name: marble
+    sources:
+      - type: git
+        url: https://invent.kde.org/education/marble.git
+        tag: v24.08.3
+        commit: 1a7b6db0e0f8ccaa64bae208ab6e8ade5c12d6c9
+    buildsystem: cmake
+    config-opts:
+      - -DBUILD_MARBLE_TESTS=ON
+    run-tests: true
+    test-rule: ""
+    test-commands:
+      - QT_QPA_PLATFORM="offscreen" ctest -E "appstreamtest|MarbleRunnerManagerTest"
+  - name: zombietrackergps
+    sources:
+      - type: git
+        url: https://gitlab.com/ldutils-projects/zombietrackergps.git
+        tag: v_1.15
+        commit: f121a6f98297fda3aeed24f9717e8f9503b8ee49
+    buildsystem: cmake
+    builddir: true
+    config-opts:
+      - -DLDUTILS_ROOT=/app/
+      - -DCMAKE_BUILD_TYPE=Release
+    run-tests: false
+    test-rule: ""
+    test-commands:
+      - make testztgps
+      - QT_QPA_PLATFORM="offscreen" ./artifacts/testztgps
+  - name: metadata
+    sources:
+      - type: file
+        path: net.zombietrackergps.ztgps.metainfo.xml
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 -t /app/share/metainfo net.zombietrackergps.ztgps.metainfo.xml
+      - mv /app/share/applications/zombietrackergps.desktop /app/share/applications/net.zombietrackergps.ztgps.desktop
+      - desktop-file-edit --set-key=Icon --set-value=net.zombietrackergps.ztgps /app/share/applications/net.zombietrackergps.ztgps.desktop
+      - mv /app/share/zombietrackergps/zombietrackergps.png /app/share/icons/hicolor/64x64/apps/net.zombietrackergps.ztgps.png
