@@ -10,10 +10,17 @@ jobs:
     container:
       image: bilelmoussaoui/flatpak-github-actions:kde-5.15-23.08
       options: --privileged
+    permissions:
+      id-token: write
+      contents: read
+      attestations: write
     steps:
     - uses: actions/checkout@v4
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
-        bundle: palette.flatpak
+        bundle: net.zombietrackergps.ztgps.flatpak
         manifest-path: net.zombietrackergps.ztgps.yml
         cache-key: flatpak-builder-${{ github.sha }}
+    - uses: actions/attest-build-provenance@v2
+      with:
+        subject-path: '${{ github.workspace }}/net.zombietrackergps.ztgps.flatpak'
