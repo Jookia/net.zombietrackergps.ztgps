@@ -8,13 +8,42 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   
+  <developer id="net.zombietrackergps">
+    <name>ZombieTrackerGPS developers</name>
+  </developer>
+
   <description>
     <p>
       ZombieTrackerGPS (ZTGPS) can manage collections of GPS tracks from biking, hiking, rafting, light aircraft, snowboarding, and many other activities. It features local data storage, privacy-by-design with no data scraping or monetization, advanced sorting and query capabilities to let you see and manage your data, and a highly customizable interface to put you in control.
     </p>
   </description>
+
+  <launchable type="desktop-id">net.zombietrackergps.ztgps.desktop</launchable>
+
+  <categories>
+    <category>Education</category>
+    <category>Science</category>
+  </categories>
+
+  <keywords>
+    <keyword>Qt</keyword>
+    <keyword>GPX</keyword>
+    <keyword>GPS</keyword>
+  </keywords>
   
-  <launchable type="desktop-id">zombietrackergps.desktop</launchable>
+  <branding>
+    <color type="primary" scheme_preference="light">#62a0ea</color>
+    <color type="primary" scheme_preference="dark">#3d3846</color>
+  </branding>
+
+  <content_rating type="oars-1.1" />
+
+  <url type="homepage">https://zombietrackergps.net/ztgps/</url>
+  <url type="bugtracker">https://gitlab.com/ldutils-projects/zombietrackergps/-/issues</url>
+  <url type="faq">https://zombietrackergps.net/ztgps/#link-faq</url>
+  <url type="donation">https://zombietrackergps.net/ztgps/#link-donations</url>
+  <url type="vcs-browser">https://gitlab.com/ldutils-projects/zombietrackergps</url>
+
   <screenshots>
     <screenshot type="default">
       <image>https://www.zombietrackergps.net/ztgps/Images/Large/ZTGPS-Full-Dark.jpg</image>
@@ -26,4 +55,15 @@
       <image>https://www.zombietrackergps.net/ztgps/Images/Screenshots/App-Docs.jpg</image>
     </screenshot>
   </screenshots>
+
+  <releases>
+    <release version="1.15" date="2023-06-22">
+      <url type="details">https://zombietrackergps.net/ztgps/history.html#1.15</url>
+      <description>
+        <p>
+          Version 1.15 has minor UI improvements, but is primarily to roll out the new cmake based build and package process. There are improvements to OpenSUSE building, updates to the BUILDING.md and LIBRARIES.md documentation, improved localization support, fixes for compilation on the latest Arch linux, and a completely retooled build process. See the included documentation for details.
+        </p>
+      </description>
+    </release>
+  </releases>
 </component>
